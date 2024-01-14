@@ -1,0 +1,159 @@
+>> Hello World! (in Firefox Developer Tool)
+Ways to Open Firefox Developer Tool
+	> ctrl + shift + c  And Choose Console
+	> ctrl + shift + J			(It only worked with chrome, now with firefox)
+	> Right click on the screen and choose inspect	(It only worked with chrome, not with firefox)
+
+1) alert("Hello World!") and press Enter
+	Javascript will give a pop-window which says Hello World!
+	
+2) let js='amazing' and Hit Enter
+if(js=='amazing') alert ('javascript is fun!') ---> Hit Enter
+	Javascript will give a pop-up window saying 'javascript is fun'
+	
+3) We can also change js to 'boring'
+js='boring' ---> Hit Enter
+if(js=='amazing') alert('javascript is fun!') ----> Hit Enter
+	The alert window will not be shown
+
+We can go previous comments using up arrow.
+
+4) 40+8+23-10	---> Hit Enter
+61
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>A Brief Introduction To JavaScript
+
+Javascript is a high-level, object-oriented, multi-paradigm programming language.
+High-level----> We dont' have to worry about complex stuff like memory management.
+Multi-paradigm----> We can use different styles of programming.
+Programming language---> Instruct computer to do things.
+Object-Oriented----> Based on objects, for storing most of data.
+
+
+The Role of javascript in Web-development
+-------------------------------------------------
+Front-End Apps
+	Dynamic effects and web-development in the browser
+	Frameworks based on javascript
+		React, Angular, Vue
+	
+Back-end apps
+	Web-applications on web-servers
+		nodeJs
+
+Native Mobile Applications
+	React Native, Ionic Framework
+	
+Native Desktop Applications
+	Electron
+	
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Linking A JavaScript File
+
+index.html
+--------------
+<html>
+...
+..
+..
+..
+	<script>
+		let js='amazing';	(; (semi-colon) is optional but it is a good practice)
+		if(js=='amazing') alert ('javascript is fun!');
+		
+		//40+8+23-10;		(We need to tell javascript to explicitly output the result on console)
+		console.log(40+8+23-10);
+	</script>
+	</body>
+	..
+	..
+</html>
+
+This script is an inline script.
+
+> External js file instead of using inline script. We can get rid of script in index.html.
+
+script.js
+=============
+	let js = "amazing";
+	if (js == "amazing") alert("javascript is fun!");
+	console.log(40 + 8 + 23 - 10);
+
+
+Now, linking js file to html file and we usually do that at the end of the body tag. 
+<body>
+..
+..
+..
+<script src="script.js"></script>
+</body>
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Values And Variables<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+let firstName='Jonas';
+console.log(firstName);
+
+>>Conventions and Rules for naming variables
+--------------------------------------------------
+CamelCaseNotation	(Most Popular)
+let firstName/firstPersonName='Matilda';
+
+
+
+let fist_name/first_name_person='Matilda';
+
+
+>> Rules for naming variables
+--------------------------------
+let 3years=3;	(This is wrong)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

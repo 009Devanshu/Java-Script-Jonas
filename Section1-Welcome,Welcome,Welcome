@@ -1,0 +1,22 @@
+Setting Up Our Code Editor
+-----------------------------------
+We will use vs code. There are alternatives to vscode like Adam, Brackets.
+
+Theme
+-------
+Extension Symbol---> Click on it and install Monokai pro (However it is paid color theme)
+
+	Another theme that is similar to Monokai Pro is Monokai classic which is free. 
+	
+VS Code Settings
+----------------------
+	.AutoSave
+		.On FocusChange
+Multiu Cursor Modifier
+	alt
+Word Wrap
+	On
+Format On Save
+	Check
+File Icon Theme
+	Seti(Visual Studio Code)	
