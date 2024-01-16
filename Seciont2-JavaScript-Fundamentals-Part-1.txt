@@ -96,7 +96,7 @@ Now, linking js file to html file and we usually do that at the end of the body 
 
 
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Values And Variables<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Values And Variables<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 let firstName='Jonas';
 console.log(firstName);
@@ -114,12 +114,141 @@ let fist_name/first_name_person='Matilda';
 >> Rules for naming variables
 --------------------------------
 let 3years=3;	(This is wrong)
+	(Can not start a variable name with a number)
+
+Variable names can not have special symbols except underscode and dollar sign.
+We can not use reserved keyword for naming variable. 
+
+let new = 27;	(Wrong)
+let function=27;	(Wrong)
+let name='Jonas';	(Although it is reserved keyword but it is allowed to use)
+
+
+>> Important Conventions
+------------------------------
+let Person = 'Jonas';	(This is not right)
+let person = 'Jonas';	(This is correct way)
+
+let PI = 3.1415;	(This is correct)(It is constant, so it should be written in capital letters)
 
 
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Data Types<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+In every programming language, values can have different types, depending upon types of data that we want to hold.
+
+Value can be Object or Primitive. 
+Object:-
+	let me={
+		name='Jonas'
+		};
+		
+Primitive:-
+	let firstName = 'Jonas';
+	let age = 10;
+	
+
+The 7 primitive data types:-
+-----------------------------
+1) Number: Floating Point Numbers --< Used for decimal and integers 
+	let age = 23; which is similar to let age = 23.0;
+	
+2) String: Sequence of characters --< Used for texts 
+	let firstName = 'Jonas';	(No matter, single quotes or double quotes)
+
+3) Boolean: Logical type that can be true or false --> Used for taking decisions
+	let fullAge = true;
+	
+4) Undefined: Value taken by a variable that is not yet defined. (empty value)
+	let children;
+	
+5) Null: Also means 'empty value'
+
+6) Symbol(ES2015): Value that is unique and can not be changed. [Not useful for now]
+
+7) BigInt(ES2020): Larger integers than the number type can hold.
 
 
+	JavaScript has dynamic typing: We do not have to manually define the data type of the value stored in a variable. Instead, datatypes are defined automatically. 
+		Note: Value has type, not variable
+		
+//let firstName = 'Jonas'; Single Line Comment		(ctrl + /)
+/* First-line
+   Second-line
+   .			Multi-lines comment
+   .
+   nth line */
+   
 
+>If one variable is holding the value of one particular type, the same variable can hold the value of different type at another time. 
+let javascriptIsFun = true;
+javascriptIsFun = 100;
+
+
+> typeof operator
+It tells the type of value
+
+console.log(typeof true);
+Output:- boolean
+
+console.log(typeof javascriptIsFun);
+Output:- Number
+
+> Undefined
+let year;
+console.log(year);
+console.log(typeof year);
+Output: undefined	(Value of the variable)
+	undefined 	(Type of the variable)
+	
+
+We can reassign the variable
+year = 1991;
+console.log(year);
+Output: 1991;
+	
+ 
+> console.log(typeof null);
+	It is similar to undefined. Both the value and type of the value are null.
+Output--> object	(It is regarded as a bug in JS) 
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>let, const, var<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+let and const were introduced in ES6 so they are modern javascript whereas var is the old way of declaring variables. 
+
+let age = 30;
+age=31;
+We say that is is reassigning the variable or also we say that we mutate the age variable. 
+
+> value in a const variable can not be changed.
+const birthYear = 1991;
+birthYear = 1990;	(We can not reassign the variable because birthyear is immutable variable)
+
+
+> const job;	(It will give error, we can not do this)
+
+Note: Use const as much as possible.
+
+> var	(It should be completely avoided)
+var job = 'programmer';
+job = 'teacher';
+(Although, var looks same as let but they are different. let is block-scoped and var is function-scoped. We will learn it in Section-7)
+  
+	Some people point out that we don't even have to declare variables at all because it is not mandatory.
+	lastName = 'Schmedtmann';
+	However, this is actually a pretty terrible idea because it does not create a varible in the current so-called scope, instead javascript will create a property on the global-scope. 
+	
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Basic Operators<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+> Mathematical Operations
+	const ageJonas = 2037-1991;
+	console.log(ageJonas);		O/P:- 41
+	
+> const ageJonas = 2037-1991;
+  const ageSarah = 2037-2018;
+  console.log(ageJonas,ageSarah);  (We can also do this)	O/P:-46 19	
+
+> 
 
 
 
