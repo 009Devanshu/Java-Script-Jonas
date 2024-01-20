@@ -1,0 +1,243 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Activating Strict Mode<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+>Strict mode is a special mode that we can activate in javascript which makes easier for us to write a secure javascript code. All we have to do to activate strict mode. Write this at the beginning of script-->
+ 'use strict';		(AT the beginning of script)
+ 
+> We can also activate strict mode only for a specific function or specific block.
+ 
+> Strict mode makes it easier for developers to avoid accidental erros, so basically it helps us introduce bugs in our code. That is because of two reasons, first strict mode forbids us to do certain things and second, it will actually create visible errors for us in certain situations in which without strict mode JS would simply fail silectly without letting us know that we did a mistake. 
+
+Example:-
+--------------
+let hasDriversLicense = false;
+const passTest = true;
+if (passTest) hasDriverLicense = true;
+if (hasDriversLicense) console.log("I can drive:D");
+
+When we will see on console, we will not get any output and also it will inform us about any error in console.
+We got an error:-
+Uncaught ReferenceError: assignment to undeclared variable hasDriverLicense
+
+
+Example2:-
+----------------
+const interface = "Audio";
+Uncaught SyntaxError: interface is a reserved identifier
+
+	That means JS is reserving the word interface for a feature that it might implement in the future. 
+
+Example3:-
+const private = 534;	(It will not work)
+
+	If we don't use strict mode, these variable names will work and give output on the consoe without giving any error. 
+	
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Functions<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+> Defining function-->
+function logger(){
+	console.log('My name is Jonas');
+}
+
+logger();	This process of using the function is called invoking the function, running the function or calling the function.
+logger();
+logger();
+We can call it multiple times. 
+
+> We can pass a value to function and a function can return a value as well. 
+
+function fruiteProcessor(apples,oranges){		//apples and oranges will be defined once the function is called.
+	console.log(apples,oranges);
+	const juice = `juice with ${apples} apples and ${oranges} oranges.`;
+	return juice;
+}
+
+const appleJuice = fruitProcessor(5, 0);
+console.log(appleJuice);
+console.log(fruitProcessor(5, 4));
+
+> In the first example
+  function logger(){
+	console.log('My name is Jonas');
+  }
+  
+  what if we pass an argument-->
+  logger(23);
+  output: My name is Devanshu.
+  
+  It means, no effect of passing arguments. 
+
+
+>console.log(fruiteProcessor(5,0));
+	log is also a function.
+	
+ Number('23') is also a function which returns 23. 
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Function Declarations VS Expressions<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+>Function Declaration
+
+ function calcAge1(birthYear){
+ 	return 2037-birthYear;
+ }
+ 
+ const age1 = calcAge1(1991);
+ 
+>Function Expression
+ const calcAge2 = function (birthYear) {			//Right hand part is a function without name. So, it is also called anonymous function.
+  return 2037 - birthYear;					//Variable on the left hand side represents the function
+};
+const age2 = calcAge2(1991);
+
+Another Example
+const age3 = function (birthYear) {
+  console.log("The age is " + birthYear);
+};
+const age4 = age3(1956);
+
+
+> We can call a function declaration before they are defined in the code but we can't do it with function expression
+const age1 = calcAge1(1991);
+console.log(age1);
+function calcAge1(birthYear) {
+  return 2037 - birthYear;
+}
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Arrow Functions<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+Arrow function is a special case of function expression that is shorter and therefore faster to write. 
+
+//Arrow Function
+birthYear=>2037-birthYear;	
+
+To use this arrow function-->
+const calcAge3 = (birthYear) => 2037 - birthYear;
+const age3 = calcAge3(1991);
+console.log(age3);
+
+>But, arrow function becomes more comples when add more parameters or more code
+
+const yearsUntilRetirement = birthYear=>{
+	const age=2037-birthYear;
+	const retirement=65-age;
+	return retirement;
+}
+
+console.log(yearsUntilRetirement(1991));
+
+
+const yearsUntilRetirement = (birthYear,firstName)=>{
+	const age=2037-birthYear;
+	const retirement=65-age;
+	return `${firstName} retires in ${retirement} years`;
+}
+console.log(yearsUntilRetirement(1991, "Devanshu"));
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Function Calling Another Functions<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+function fruitProcessor(apples, oranges) {
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
+
+  const juice = `Juice with ${applePieces} apples and ${orangePieces} oranges`;
+  return juice;
+}
+console.log(fruitProcessor(2, 3));
+
+> const cutPieces = function (fruit) {
+  return fruit * 4;
+};
+const fruitProcessor = function (apples, oranges) {
+  const applePieces = cutPieces(4);
+  const orangePieces = cutPieces(5);
+  const juice = `juice with ${applePieces} pieces of apple and ${orangePieces} pieces of `;
+  return juice;
+};
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Reviewing Functions<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+const calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+const yearsUntilRetirement = function (birthYear, firstName) {
+  const age = calcAge(birthYear);
+  const retirement = 65 - age;
+  if (retirement > 0) {
+    console.log(`${firstName} retires in ${retirement} years`);
+    return retirement;
+    //console.log(`It will not be executed`);		This line will give error because it can not be executed.
+  } else {
+    console.log(`${firstName} has already retired`);
+    return -1;
+  }
+};
+
+
+//console.log(`It will not be executed`);	This line will not be executed because whenever control statement encounters with return statement, it moves out of the function.
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Reviewing Functions<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+>Two ways to use Arrays:-
+1)const friends = ["Micheal", "Steven", "Peter"];
+  console.log(friends);
+  Output:-[ "Micheal", "Steven", "Peter" ]
+
+2)const years = new Array(1991, 1992, 1993);
+  console.log(years);
+  Output:- [ 1991, 1992, 1993 ]
+  
+console.log(friends[0]); //Micheal
+console.log(years[2]);	//1993
+  
+  
+
+> length
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
