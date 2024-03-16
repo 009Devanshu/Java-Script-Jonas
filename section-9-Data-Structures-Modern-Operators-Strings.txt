@@ -1,0 +1,284 @@
+************************************************************************************Destructuring Arrays******************************************************************************
+
+const arr = [2, 3, 4];
+const a = arr[0];
+const b = arr[1];
+const c = arr[2];
+
+
+We can also destructure the array-->
+const [x, y, z] = arr;		//Here, [x,y,z] is not an array, It is just destructuring.
+console.log(x, y, z);
+
+Destructuring does not affect the structure of array.
+
+
+
+------------------------------------------------------------------------------------------
+// Data needed for first part of the section
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+};
+
+
+let [main, , secondary] = restaurant.categories;	//It will leave the second element of categories array
+console.log(main, secondary);				//Italian Vegetarian
+
+Let's swap the values of variables main and secondary
+-------------------------------------------------------
+//let temp = main;
+//main = secondary;
+//secondary = temp;
+//console.log(main,secondary);		//Vegetarian Italian
+
+Doing swaping Using Destructuring:-
+---------------------------------------
+[secondary,main] = [main,secondary];
+
+
+
+--------------------------------------------------------------------------------------------------------
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.starterMenu[mainIndex]];
+  },
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+};
+
+//Receive 2 return values from a function
+const [starterCourse, mainCourse] = restaurant.order(0, 2);
+
+
+-----------------------------------------------------------------------------------------------------------
+//Nested Destructuring
+const nested = [3, 4, [5, 6]];
+const [a, b, c] = nested;
+
+const [x, y, [m, n]] = nested;
+console.log(x, y, m, n);
+
+//default values
+const [p = 1, q = 2, r = 3] = [8, 9];
+console.log(p, q, r); //8 9 3
+
+----------------------------------------------------------------------------------------------------------
+
+
+************************************************************************************Destructuring Objects******************************************************************************
+// Data needed for main part of the section
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.starterMenu[mainIndex]];
+  },
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+};
+
+
+const { name, openingHours, categories } = restaurant;
+
+Name of variables and name of Object properties should be same. 
+
+>> But, we can give our own names-->
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+
+//Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;	//menu is not a property in restaurent, So we will get empty array. starterMenu is a property in restaurent, so it will be printed.
+
+starterMenu:starters = []	//starters is our name and default value for starterMenu is empty array.
+console.log(menu, starters);
+
+				//If we don't define default value of menu, we will get undefined.
+				
+
+
+
+//Mutating Variables
+let a = 111;
+let b = 222;
+const obj = { a: 2, b: 3, c: 4 };
+({ a, b } = obj);
+console.log(a, b);	//2 3
+
+
+------------------------------------------------
+const { openingHours } = restaurant;
+//Nested Objects
+let { fri } = openingHours;
+console.log(fri);	//Object { open: 11, close: 23 }
+const {
+  fri: { open, close },
+} = openingHours;
+console.log(open, close);	//11 23
+
+
+We can rename open and close variables of nested fri object--->
+-----------------------------------------------------------------
+const {
+  fri: { open: m, close: n },
+} = openingHours;
+console.log(m, n);
+
+
+
+-------------------------------------------------------------------------------
+// Data needed for main part of the section
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.starterMenu[mainIndex]];
+  },
+  orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+    console.log(
+      `Order received ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at time ${time}`
+    );
+  },
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+};
+
+
+
+
+
+
+restaurant.orderDelivery({
+  time: 'address',
+  address: '332 Baker Street',
+  mainIndex: 1,
+  starterIndex: 0,
+});
+
+Output:- Order received Focaccia and Pasta will be delivered to 332 Baker Street at time address
+
+---------------------------------------------------------------------------------------------------------------
+We can use default values or other names for parameters of OrderDelivery function as we did previously.
+
+
+
+// Data needed for main part of the section
+const restaurant = {
+  ..
+  ..
+  orderDelivery: function ({ starterIndex=1, mainIndex=1, time='20:00', address='UK' }) {
+    console.log(
+      `Order received ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at time ${time}`
+    );
+  },
+  ..
+  ..
+  ..
+};
+
+
+restaurant.orderDelivery({
+  time: 'address', 
+  starterIndex: 0,
+});
+
+
+
+************************************************************************************The Spread Operator******************************************************************************
+
+const arr = [7, 8, 9];
+const newArr = [1, 2, ...arr];
+console.log(newArr);	// [ 1, 2, 7, 8, 9 ]
+
+If we do--> 
+const newArr = [1, 2, arr];
+console.log(newArr);	//It will include whole arr as an element.
+
+
+console.log(..arr);	//7 8 9		(Individual elements)
+------------------------------------------------------
+User Cases-->
+--------------
+const newMenu = [...restaurant.mainMenu, 'Gucci'];	//[ "Pizza", "Pasta", "Risotto", "Gucci" ]
+
+
+
+
+
+
+
+
+
+
+
+
+

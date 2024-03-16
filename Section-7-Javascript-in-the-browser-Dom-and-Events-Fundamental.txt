@@ -1,0 +1,93 @@
+Like we used to select selectors in css, we can also select them in JavaScript.
+
+
+Index.html
+--------------
+<section class="right">
+	<p class="message">Start guessing...</p>	//In javaScript, we can select this element based on the class (message)
+
+
+
+
+
+script.js:-
+------------
+document.querySelector(".message");
+console.log(document.querySelector(".message"));
+
+We will see <p class="message">Start guessing...</p> in console. This element in itself is not useful, so let's get the text
+
+console.log(document.querySelector(".message").textContent);
+
+Note:- When we have multiple dot operators, they are executed from left to right.
+
+***********************************************************************************WHAT Is DOM and DOM Manipulation***********************************************************************
+
+DOM(Document Object Model)---> It is structured representation of HTML documents. It allows javascript to access HTML elements and styles to manipulate them.
+
+DOM is automatically created by browser as soon as the HTML page loads, and it is stored in a tree structure like give below:- 
+	In this tree, each HTML object is one object. (See PDF)
+	
+> DOM and DOM methods are actually part of web apis, not part of javascript, web apis are libraries that browser implements that we can access from our javascript code.  
+Web APIs are also written in JavaScript and are automatically available for us to use. All this happens behind the scene, we don't need to import them.
+(PDF)
+
+
+
+***********************************************************************************Selecting and Manipulating Elements***********************************************************************
+
+> console.log(document.querySelector('.message').textContent);
+
+> Besides getting the text content, we can also set the content of the element
+ 
+  document.querySelector('.message').textContent='Correct Number';
+  
+  document.querySelector('.number').textContent = 13;
+  document.querySelector('.score').textContent = 10;
+  
+> To get the value from input field, we have to use value property
+  console.log(document.querySelector('.guess').value);
+  document.querySelector('.guess').value = 23;
+  
+
+***********************************************************************************Handling Click Events***********************************************************************
+
+document.querySelector('.check').addEventListener('.click',...)
+
+Now, we need to tell the event listener what to do (means Reaction to the click event), and we do that by defining a function and that function would contain exactly the code that should be executed whenever this click event happens on this check button, and that function is going to be called the event handler. 
+
+<button class="check">Click</button>
+document.querySelector(".check").addEventListener("click", function () {
+  console.log("This is done");
+});
+
+
+>> Whenever we get any value from user interface or from input field, it is always a string
+
+
+
+************************************************************NOT DOING FURTHER BECAUSE NOT NEED TO LEARN FOR REACT*********************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  

@@ -1,0 +1,86 @@
+********************************************************Setting Up Prettier and VS Code********************************************************************************
+
+Step 1: Installing plug-in
+Go to extension ---> Search Prettier ---> enable/intall
+
+Step 2: Define prettier as default formatter of our code
+Settings ---> Search 'Default Formatter'=> Select Prettier
+
+> Prettier automatically converts single quotes into double quotes
+'Amit' ---> "Amit"
+
+We can configure some of the properties of prettier, for example --->
+	Use single quotes instead of double quotes. There are multiple ways of configuring prettier, the most easy on is configuration file
+	.prettierrc	(In file structure)	(create this file)
+	{
+		"SingleQuote":true
+	}
+	
+Go to site ---> prettier.io 
+You can see different ways of configuration.
+
+
+>> When we write arrow function, it wrap single parameter with brackets after save.
+Add the below property in .prettierrc file
+
+{
+    "singleQuote": true,
+    "arrowParens":"avoid"
+}
+
+
+
+>>> Automating console.log
+We write console.log again and again. We can configure snipets, which can take that work away from us. 
+
+Command Palette>>> Snippets>> Select 'Create Global Snippet...'>> Give the file name and hit enter
+
+You will find--->
+---------------
+"Print to console": {
+		"scope": "javascript,typescript",
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+}
+
+
+
+
+*******************************************************************Installing Node.js And Setting Up a Dev Environment*******************************************************************
+
+We can actually use Live-stream in two different ways-->
+-----------------------------------------------------------
+1--> Installing live-server extension (as we already did)
+2--> Node.js and npm package
+
+Node.js--> It is javascript runtime that we can install on our computers. Node.js is way of running javascript outside of the browser.
+
+
+****************************************************************************************THE END***********************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,525 @@
+Install Extension Quokka.js that will allow us to run our javaScript code. (We dont need to connect our js file with html file)
+To Start Quokka---> Open Command Palette and type Quokka start
+
+***************************************************************************************************
+const data = [
+  {
+    id: 1,
+    title: "The Lord of the Rings",
+    publicationDate: "1954-07-29",
+    author: "J. R. R. Tolkien",
+    genres: [
+      "fantasy",
+      "high-fantasy",
+      "adventure",
+      "fiction",
+      "novels",
+      "literature",
+    ],
+    hasMovieAdaptation: true,
+    pages: 1216,
+    translations: {
+      spanish: "El señor de los anillos",
+      chinese: "魔戒",
+      french: "Le Seigneur des anneaux",
+    },
+    reviews: {
+      goodreads: {
+        rating: 4.52,
+        ratingsCount: 630994,
+        reviewsCount: 13417,
+      },
+      librarything: {
+        rating: 4.53,
+        ratingsCount: 47166,
+        reviewsCount: 452,
+      },
+    },
+  },
+  {
+    id: 2,
+    title: "The Cyberiad",
+    publicationDate: "1965-01-01",
+    author: "Stanislaw Lem",
+    genres: [
+      "science fiction",
+      "humor",
+      "speculative fiction",
+      "short stories",
+      "fantasy",
+    ],
+    hasMovieAdaptation: false,
+    pages: 295,
+    translations: {},
+    reviews: {
+      goodreads: {
+        rating: 4.16,
+        ratingsCount: 11663,
+        reviewsCount: 812,
+      },
+      librarything: {
+        rating: 4.13,
+        ratingsCount: 2434,
+        reviewsCount: 0,
+      },
+    },
+  },
+  {
+    id: 3,
+    title: "Dune",
+    publicationDate: "1965-01-01",
+    author: "Frank Herbert",
+    genres: ["science fiction", "novel", "adventure"],
+    hasMovieAdaptation: true,
+    pages: 658,
+    translations: {
+      spanish: "",
+    },
+    reviews: {
+      goodreads: {
+        rating: 4.25,
+        ratingsCount: 1142893,
+        reviewsCount: 49701,
+      },
+    },
+  },
+  {
+    id: 4,
+    title: "Harry Potter and the Philosopher's Stone",
+    publicationDate: "1997-06-26",
+    author: "J. K. Rowling",
+    genres: ["fantasy", "adventure"],
+    hasMovieAdaptation: true,
+    pages: 223,
+    translations: {
+      spanish: "Harry Potter y la piedra filosofal",
+      korean: "해리 포터와 마법사의 돌",
+      bengali: "হ্যারি পটার এন্ড দ্য ফিলোসফার্স স্টোন",
+      portuguese: "Harry Potter e a Pedra Filosofal",
+    },
+    reviews: {
+      goodreads: {
+        rating: 4.47,
+        ratingsCount: 8910059,
+        reviewsCount: 140625,
+      },
+      librarything: {
+        rating: 4.29,
+        ratingsCount: 120941,
+        reviewsCount: 1960,
+      },
+    },
+  },
+  {
+    id: 5,
+    title: "A Game of Thrones",
+    publicationDate: "1996-08-01",
+    author: "George R. R. Martin",
+    genres: ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+    hasMovieAdaptation: true,
+    pages: 835,
+    translations: {
+      korean: "왕좌의 게임",
+      polish: "Gra o tron",
+      portuguese: "A Guerra dos Tronos",
+      spanish: "Juego de tronos",
+    },
+    reviews: {
+      goodreads: {
+        rating: 4.44,
+        ratingsCount: 2295233,
+        reviewsCount: 59058,
+      },
+      librarything: {
+        rating: 4.36,
+        ratingsCount: 38358,
+        reviewsCount: 1095,
+      },
+    },
+  },
+];
+
+
+function getBooks() {
+  return data;
+}
+
+function getBook(id) {
+  return data.find((d) => d.id === id);	
+}
+********************************************************************************ARRAY AND OBJECT DESTRUCTURING************************************************************************
+
+
+
+How to use Quokka-->
+const books = getBooks();	//It will return whole array.
+books;				//To print books
+
+const book = getBook(2);
+
+//Without Using Object Destructuring
+const title =  book.title;
+title;
+const author = book.author;
+author;
+console.log(title,author)
+
+//Using Object Destructuring
+const { title, author } = book;
+console.log(title,author);
+
+
+//You already know Array Destructuring
+
+
+********************************************************************************REST/SPREAD OPERATOR************************************************************************
+
+REST Operator
+-------------------
+const { title, author, genres } = book;
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres;		//...otherGenres represents other array of remaining elements
+console.log(primaryGenre, secondaryGenre);	//'science fiction humor' 
+console.log(otherGenres);		//[ 'speculative fiction', 'short stories', 'fantasy' ]
+console.log(...otherGenres);		//'speculative fiction short stories fantasy' 
+
+---------------------------------
+Spread Operator with Array
+---------------------------------
+const arr = [7, 8, 9];
+const newArr = [1, 2, ...arr];
+console.log(newArr);	// [ 1, 2, 7, 8, 9 ]
+
+If we do--> 
+const newArr = [1, 2, arr];
+console.log(newArr);	//It will include whole arr as an element.
+
+
+console.log(..arr);	//7 8 9		(Individual elements)
+
+----------------------------------------------------------------------------------------------
+Spread Operator With Objects
+-----------------------------------------------------------------------------------------------
+
+//Adding a new property using Spread operator
+------------------------------------------------
+const book = getBook(2);
+const updatedBook = { book, moviePublicationDate: "2020-12-19" };		//But, It will add the property after object book. But, we want this property inside book.
+
+const updatedBook = { ...book, moviePublicationDate: "2020-12-19" };
+
+
+Updating existing property using Spread Operator
+-------------------------------------------------
+
+const updatedBook = {
+  ...book,
+  //Adding a new property
+  moviePublicationDate: "2020-12-19",
+  //Overriding an existing property
+  pages: 1000,					//It is updating page property.
+};
+
+Note: pages property should be after ...book. If we write pages property before ...book. pages property in ...book will update pages=1000
+
+
+
+********************************************************************************SHORT-CICRUITING AND LOGICAL OPERATORS: &&,||,??***************************************************************
+
+Logical operators &&, || have short-circuiting feature.
+
+-----------
+&&
+-----------
+true && 1	//1
+true && 'Some String'	//Some String
+false && 'Devanshu'	//false
+
+//falsy
+console.log('Jonas' && 'Some String');	//Some String
+console.log(0 && 'Some String');	//0	(Because 0 is falsy value)
+
+-----------
+||
+-----------
+true || 'some string'	//true		(Since first element is true, it will not go for second value)
+false || 'Some String'	//Some String	(Since first value is false, it will got to second value)
+
+0 || "Some String"	//Some String	(0 is falsy value which gives false, so it will go to second value)
+0 || undefined		//undefined
+
+----------------------
+??
+----------------------
+It works like || operator. But the difference is that it returns second value if the first value is null or undefined. It will not return second value if first value is 0 or empty string)
+
+0 ?? 'No Data'		//0
+'' ?? 'Some String'	//''
+
+
+********************************************************************************OPTIONAL CHAINING***************************************************************
+
+function getTotalReviewsCount(book) {
+  const goodReads = book.reviews.goodreads.reviewsCount;		
+  const librarything = book.reviews.librarything.reviewsCount;
+  return goodReads + librarything;
+}
+
+Use Case of Optional Chaining--->
+---------------------------------
+book.reviews.goodreads		(If goodreads is not present, then book.reviews.goodreads.reviewsCount; will give undefined)
+
+function getTotalReviewsCount(book) {
+  const goodReads = book.reviews.goodreads?.reviewsCount;		(This value is optional, goodreads is present, it will give reviewsCount, if it is not it will not create any problem)	
+  const librarything = book.reviews.librarything.reviewsCount;
+  return goodReads + librarything;
+}
+
+console.log(getTotalReviewsCount(book));	//It will still give NaN. Because book.reviews.goodreads is still undefined. Althoudh It will not give any error. But it is still undefined.
+
+Better approach
+-------------------
+function getTotalReviewsCount(book) {
+  const goodReads = book.reviews.goodreads.reviewsCount ?? 0;		
+  const librarything = book.reviews.librarything.reviewsCount;
+  return goodReads + librarything;
+}
+
+
+
+********************************************************************************THE ARRAY MAP METHOD***************************************************************
+
+Three important methods -->
+map
+filter 
+reduce
+These methods do not mutate array.
+
+onst x = [1, 2, 3, 4, 5].map((e) => e * 2);	//map method map each element of array and returns an array.
+console.log(x);		//[ 2, 4, 6, 8, 10 ]
+
+
+------------------------------------------
+const books = getBooks();
+const title = books.map((book) => book.title);
+console.log(title);	//Array of all the titles
+
+
+---------------------------------------------
+const essentialBooks = books.map((book) => {		//Returning an object
+  return {
+    title: book.title,
+    author: book.author,
+  };
+});
+
+
+We can remove word return--->
+const essentialBooks = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+}));
+
+
+
+********************************************************************************THE ARRAY FILTER MATHOD****************************************************************************
+
+const books = getBooks();
+
+const longBooks = books.filter((book) => book.pages > 500);	//It will give array of books with pages > 500
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+
+adventureBooks;			
+//[ 'The Lord of the Rings',
+  'Dune',
+  'Harry Potter and the Philosopher\'s Stone' ]
+  
+  
+********************************************************************************THE ARRAY REDUCE METHOD***************************************************************************
+
+reduce method is versatile method. 
+
+const books = getBooks();
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+console.log(pagesAllBooks);	//3227
+
+reduce(callbackFunction,accumulator);	
+(acc, book) => acc + book.pages		//Initial value of acc = 0 
+acc = acc+book.pages;
+
+acc = 0+1216;	//acc=1216
+acc = 1216 + 295;	//1511
+and so on
+
+
+
+********************************************************************************THE ARRAY SORT METHOD***************************************************************************
+
+const arr = [3, 7, 1, 9, 6];
+const sorted = arr.sort((a, b) => a - b);	//Ascending Order
+
+const sorted = arr.sort((a, b) => b - a);	//Descending Order
+
+Note: sort() method is not a functional method. It will mutate the original array. So, It will also sort original array.
+We can avoid this situation by using slice() method.
+
+const sorted = arr.slice().sort((a, b) => b - a);
+sorted;		//[ 9, 7, 6, 3, 1 ]
+arr;		//[ 3, 7, 1, 9, 6 ]
+
+slice() method returns the copy or array.
+
+
+----------------------------------------
+const books = getBooks();
+const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
+
+
+
+********************************************************************************Working With Immutable Arrays***************************************************************************
+
+When we add, update or delete an element from an array, it should not change the internal structure of the array.
+
+const books = getBooks();
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J K Rowlings",
+};
+const booksAfterAdd = [...books, newBook];
+
+//Delete Book object from Array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+
+//Update book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 5000 } : book
+);
+booksAfterUpdate;
+
+
+********************************************************************************Asynchronous JavaScript:Promises***************************************************************************
+
+To load data from external web api.
+
+Use JSON Placeholder	(Site)
+
+Promises--> They allow you to handle asynchronous operations more elegantly and avoid callback hell (a situation where multiple nested callbacks make the code difficult to read and maintain).
+
+const myPromise = new Promise((resolve, reject) => {
+  // Perform asynchronous operation
+  if (/* operation successful */) {
+    resolve(result);
+  } else {
+    reject(error);
+  }
+});
+
+
+myPromise.then((result) => {
+  // Handle successful result		//resolve
+}).catch((error) => {
+  // Handle error			//reject
+});
+
+
+
+myPromise
+  .then((result) => {
+    // Perform another asynchronous operation based on the result
+    return anotherAsyncOperation(result);
+  })
+  .then((anotherResult) => {
+    // Handle the result of the second operation
+  })
+  .catch((error) => {
+    // Handle any errors that occur during the chain
+  });
+
+
+
+Example-->
+function getCheese() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const cheese = "Cheese";
+      resolve(cheese);
+    }, 2000);
+  });
+}
+function getDough(cheese) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const dough = cheese + " dough";
+      resolve(dough);
+    }, 2000);
+  });
+}
+function getPizza(dough) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const pizza = dough + " pizza";
+      resolve(pizza);
+    }, 2000);
+  });
+}
+-----------------------------------
+// getCheese()
+//   .then((cheese) => {
+//     console.log("Here is the " + cheese);
+//     return getDough(cheese);
+//   })
+//   .then((dough) => {
+//     console.log("Here is the " + dough);
+//     return getPizza(dough);
+//   })
+//   .then((pizza) => {
+//     console.log("Here is the " + pizza);
+//   })
+//   .catch((data) => {
+//     console.log("Error Occured " + data);
+//   })
+//   .finally(() => {
+//     console.log("Process Ended");
+//   });
+//console.log(getCheese());
+
+Or we can use async/await
+--------------------------------------------------
+async function orderPizza() {
+  try {
+    const cheese = await getCheese();
+    console.log("Here is the " + cheese);
+    const dough = await getDough(cheese);
+    console.log("Here is the " + dough);
+    const pizza = await getPizza(dough);
+    console.log("Here is the pizza " + pizza);
+  } catch (err) {
+    console.log("Error Occured " + err);
+  }
+}
+
+orderPizza();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
